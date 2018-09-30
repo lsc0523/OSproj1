@@ -323,7 +323,6 @@ run_actions (char **argv)
     {
       const struct action *a;
       int i;
-
       /* Find action name. */
       for (a = actions; ; a++)
         if (a->name == NULL)

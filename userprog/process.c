@@ -37,7 +37,6 @@ process_execute (const char *file_name)
   if (fn_copy == NULL)
     return TID_ERROR;
   strlcpy (fn_copy, file_name, PGSIZE);
-
   /* Create a new thread to execute FILE_NAME. */
   tid = thread_create (file_name, PRI_DEFAULT, start_process, fn_copy);
   if (tid == TID_ERROR)
@@ -53,17 +52,25 @@ start_process (void *file_name_)
   char *file_name = file_name_;
   struct intr_frame if_;
   bool success;
-
+  int i;
+  char input_file[256];
+  for(i=0;;i++)
+  {
+	  if(file_name[i]==' '||file_name[i]=='\0')
+		  break;
+	  input_file[i]=file_name[i];
+  }
+  input_file[i]='\0';
   /* Initialize interrupt frame and load executable. */
   memset (&if_, 0, sizeof if_);
   if_.gs = if_.fs = if_.es = if_.ds = if_.ss = SEL_UDSEG;
   if_.cs = SEL_UCSEG;
   if_.eflags = FLAG_IF | FLAG_MBS;
-  success = load (file_name, &if_.eip, &if_.esp);
+  success = load (input_file, &if_.eip, &if_.esp);
 
   /* If load failed, quit. */
   palloc_free_page (file_name);
-  if (!success) 
+  if (!success)
     thread_exit ();
 
   /* Start the user process by simulating a return from an
@@ -88,6 +95,8 @@ start_process (void *file_name_)
 int
 process_wait (tid_t child_tid UNUSED) 
 {
+	int i;
+	for(i=0;i<5000000000;i++);
   return -1;
 }
 
@@ -101,7 +110,7 @@ process_exit (void)
   /* Destroy the current process's page directory and switch back
      to the kernel-only page directory. */
   pd = cur->pagedir;
-  printf("%s: exit(%d)\n",cur->name,cur->status);
+  //printf("%s: exit(%d)\n",cur->name,cur->status);
   if (pd != NULL) 
     {
       /* Correct ordering here is crucial.  We must set
@@ -215,13 +224,24 @@ load (const char *file_name, void (**eip) (void), void **esp)
   off_t file_ofset;
   bool success = false;
   int i;
-
   /* Allocate and activate page directory. */
   t->pagedir = pagedir_create ();
   if (t->pagedir == NULL) 
     goto done;
   process_activate ();
-
+	/////여기서부터 본인이 짠 코드
+  //file_name 문자열을 파싱한다.
+  /*char* input_file;
+  int name_num=0;
+  for(i=0;;i++){
+	  if(file_name[i]==' ')
+		  break;
+	  name_num++;
+  }//file_name의 길이를 구함
+  input_file=(char*)malloc(sizeof(char)*(name_num+1));
+  for(i=0;i<name_num;i++)
+	  input_file[i]=file_name[i];
+  input_file[i]='\0';*/
   /* Open executable file. */
   file = filesys_open (file_name);
   if (file == NULL) 
@@ -242,7 +262,6 @@ load (const char *file_name, void (**eip) (void), void **esp)
       printf ("load: %s: error loading executable\n", file_name);
       goto done; 
     }
-
   /* Read program headers. */
   file_ofset = ehdr.e_phoff;
   for (i = 0; i < ehdr.e_phnum; i++) 
@@ -301,16 +320,13 @@ load (const char *file_name, void (**eip) (void), void **esp)
           break;
         }
     }
-
   /* Set up stack. */
   if (!setup_stack (esp))
     goto done;
-
   /* Start address. */
   *eip = (void (*) (void)) ehdr.e_entry;
 
   success = true;
-
  done:
   /* We arrive here whether the load is successful or not. */
   file_close (file);
