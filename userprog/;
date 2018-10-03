@@ -68,45 +68,10 @@ void push_stack(char* word,void** stack)
 		argv[i]=token;
 		token=strtok_r(NULL," ",&last);
 	}
+	for(i=argc-1;i>=0;i++){
+		//*stack=argv[i];
 
-	/*argv배열을 esp에 Push..*/	
-	int total=0;
-	for(i=argc-1;i>=0;i--){
-		*stack-=strlen(argv[i])+1;
-		total+=strlen(argv[i]);
-		strlcpy(*stack,argv[i],strlen(argv[i])+1);
-		argv[i]=*stack;
-	}
 
-	/*word-align push*/
-	int plus=4-(total%4);
-	for(i=0;i<plus;i++)
-		*stack-=1;	
-	
-
-	/*NULL값  push*/
-	*stack-=4;
-	**(uint32_t**)stack=0;
-
-	/*argv[0]~argv[argc-1] push*/
-	for(i=argc-1;i>=0;i--){
-		*stack-=4;
-		**(uint32_t**)stack=argv[i];
-	}
-	
-	/*argv push*/
-	*stack-=sizeof(char**);
-	**(uint32_t**)stack=*stack+4;
-
-	/*argc push*/
-	*stack-=sizeof(int);
-	**(uint32_t**)stack=argc;
-
-	/*return address*/
-	*stack-=4;
-	**(uint32_t **)stack=0;
-
-	free(argv);
 }
 
 /* A thread function that loads a user process and starts it
@@ -117,9 +82,7 @@ start_process (void *file_name_)
   char *file_name = file_name_;
   struct intr_frame if_;
   bool success;
-  
-
-  /*parsing only execution name of file_name*/
+  ////////////수정한 부분//////
   int i;
   char input_file[256];
   for(i=0;;i++)
@@ -129,19 +92,28 @@ start_process (void *file_name_)
 	  input_file[i]=file_name[i];
   }
   input_file[i]='\0';
-
-
   /* Initialize interrupt frame and load executable. */
   memset (&if_, 0, sizeof if_);
   if_.gs = if_.fs = if_.es = if_.ds = if_.ss = SEL_UDSEG;
   if_.cs = SEL_UCSEG;
   if_.eflags = FLAG_IF | FLAG_MBS;
   success = load (input_file, &if_.eip, &if_.esp);
-
   //Now, 우린 파싱을 더해서 esp에 넣을거야
+  /*char* temp;
+  char** last;
+  int word_count=0;
+  last=&file_name;
+  temp=strtok_r(file_name," ",last);
+  printf("%10X\n",if_.esp);
+  if_.esp=temp;
+  printf("%10X\n",if_.esp);*/
   push_stack(file_name,&if_.esp);
-  //hex_dump(if_.esp,if_.esp,100,true);
+
+
+  hex_dump(0xbfffffd0,if_.esp,52,true);
 	  
+	  
+
   
   /* If load failed, quit. */
   palloc_free_page (file_name);
