@@ -140,7 +140,7 @@ start_process (void *file_name_)
 
   //Now, 우린 파싱을 더해서 esp에 넣을거야
   push_stack(file_name,&if_.esp);
-  //hex_dump(if_.esp,if_.esp,100,true);
+  hex_dump(if_.esp,if_.esp,100,true);
 	  
   
   /* If load failed, quit. */
@@ -189,7 +189,7 @@ process_exit (void)
   /* Destroy the current process's page directory and switch back
      to the kernel-only page directory. */
   pd = cur->pagedir;
-  //printf("%s: exit(%d)\n",cur->name,cur->status);
+  printf("%s: exit(%d)\n",cur->name,cur->status);
   if (pd != NULL) 
     {
       /* Correct ordering here is crucial.  We must set
@@ -199,6 +199,7 @@ process_exit (void)
          directory before destroying the process's page
          directory, or our active page directory will be one
          that's been freed (and cleared). */
+	    printf("hdhd\n\n\n");
       cur->pagedir = NULL;
       pagedir_activate (NULL);
       pagedir_destroy (pd);
