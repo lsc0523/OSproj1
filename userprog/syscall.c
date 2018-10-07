@@ -15,7 +15,7 @@ syscall_init (void)
 	static void
 syscall_handler (struct intr_frame *f UNUSED) 
 {
-	printf("syscall : %d\n",*(uint32_t *)(f->esp));
+	//printf("syscall : %d\n",*(uint32_t *)(f->esp));
 	
 	switch(*(uint32_t *)(f->esp))
 	{
@@ -51,8 +51,8 @@ syscall_handler (struct intr_frame *f UNUSED)
 			break;
 
 	}
-	printf ("system call!\n");
-	thread_exit ();
+	//printf ("system call!\n");
+	//thread_exit ();
 }
 
 void halt(void)
@@ -63,6 +63,7 @@ void halt(void)
 void exit(int status)
 {
 	printf("%s: exit(%d)\n", thread_name(),status);
+	thread_current()->exit_status=status;
 	thread_exit();
 }
 

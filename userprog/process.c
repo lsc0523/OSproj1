@@ -17,7 +17,7 @@
 #include "threads/palloc.h"
 #include "threads/thread.h"
 #include "threads/vaddr.h"
-
+#include "threads/synch.h"
 static thread_func start_process NO_RETURN;
 static bool load (const char *cmdline, void (**eip) (void), void **esp);
 
@@ -37,8 +37,20 @@ process_execute (const char *file_name)
   if (fn_copy == NULL)
     return TID_ERROR;
   strlcpy (fn_copy, file_name, PGSIZE);
+
+  /* Parse file_name */
+  char copy[256];
+  int i;
+  for(i=0;;i++)
+  {
+	  if(file_name[i]==' '||file_name[i]=='\0')
+		  break;
+	  copy[i]=file_name[i];
+  }
+  copy[i]='\0';
+
   /* Create a new thread to execute FILE_NAME. */
-  tid = thread_create (file_name, PRI_DEFAULT, start_process, fn_copy);
+  tid = thread_create (copy, PRI_DEFAULT, start_process, fn_copy);
   if (tid == TID_ERROR)
     palloc_free_page (fn_copy); 
   return tid;
@@ -140,7 +152,7 @@ start_process (void *file_name_)
 
   //Now, 우린 파싱을 더해서 esp에 넣을거야
   push_stack(file_name,&if_.esp);
-  hex_dump(if_.esp,if_.esp,100,true);
+  //hex_dump(if_.esp,if_.esp,100,true);
 	  
   
   /* If load failed, quit. */
@@ -157,7 +169,12 @@ start_process (void *file_name_)
   asm volatile ("movl %0, %%esp; jmp intr_exit" : : "g" (&if_) : "memory");
   NOT_REACHED ();
 }
-
+static void NO_INLINE
+busy_wait (int64_t loops)
+{
+	while( loops-- > 0)
+		barrier();
+}
 /* Waits for thread TID to die and returns its exit status.  If
    it was terminated by the kernel (i.e. killed due to an
    exception), returns -1.  If TID is invalid or if it was not a
@@ -170,12 +187,20 @@ start_process (void *file_name_)
 int
 process_wait (tid_t child_tid UNUSED) 
 {
-	int i;
+	/*int i;
 	int sum=0;
+	struct list_elem* e;
+	struct thread* t=NULL;
 	for(i=0;;i++)
 	{
 		sum+=i;
+		t=thread_current();
+		if(t->exit_status==0)
+			return t->exit_status;
 	}
+	//busy_waiting();*/
+	busy_wait(1000000000);
+	
   return -1;
 }
 
@@ -189,7 +214,7 @@ process_exit (void)
   /* Destroy the current process's page directory and switch back
      to the kernel-only page directory. */
   pd = cur->pagedir;
-  printf("%s: exit(%d)\n",cur->name,cur->status);
+  //printf("%s: exit(%d)\n",cur->name,cur->status);
   if (pd != NULL) 
     {
       /* Correct ordering here is crucial.  We must set
@@ -199,7 +224,7 @@ process_exit (void)
          directory before destroying the process's page
          directory, or our active page directory will be one
          that's been freed (and cleared). */
-	    printf("hdhd\n\n\n");
+
       cur->pagedir = NULL;
       pagedir_activate (NULL);
       pagedir_destroy (pd);

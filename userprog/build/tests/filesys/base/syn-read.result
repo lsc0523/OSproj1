@@ -1,0 +1,14 @@
+FAIL
+Kernel panic in run: PANIC at ../../userprog/exception.c:100 in kill(): Kernel bug - unexpected interrupt in kernel
+Call stack: 0xc00284b0 0xc002b8dc 0xc002b984 0xc0021a0d 0xc0021b3f 0xc00279cc 0xc0027b68 0xc002a5e6 0xc002ae3c 0xc002121a
+Translation of call stack:
+0xc00284b0: debug_panic (.../../lib/kernel/debug.c:38)
+0xc002b8dc: kill (.../userprog/exception.c:105)
+0xc002b984: page_fault (.../userprog/exception.c:160)
+0xc0021a0d: intr_handler (..../threads/interrupt.c:367)
+0xc0021b3f: intr_entry (threads/intr-stubs.S:38)
+0xc00279cc: memcpy (...ild/../../lib/string.c:16)
+0xc0027b68: strlcpy (...ld/../../lib/string.c:340)
+0xc002a5e6: push_stack (.../../userprog/process.c:90)
+0xc002ae3c: start_process (...../userprog/process.c:159)
+0xc002121a: kernel_thread (..../../threads/thread.c:431)

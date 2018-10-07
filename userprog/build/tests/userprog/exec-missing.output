@@ -1,0 +1,45 @@
+Copying tests/userprog/exec-missing to scratch partition...
+qemu -hda /tmp/1rrYgQw6j_.dsk -m 4 -net none -nographic -monitor null
+PiLo hda1
+Loading.........
+Kernel command line: -q -f extract run exec-missing
+Pintos booting with 3,968 kB RAM...
+367 pages available in kernel pool.
+367 pages available in user pool.
+Calibrating timer...  419,020,800 loops/s.
+hda: 5,040 sectors (2 MB), model "QM00001", serial "QEMU HARDDISK"
+hda1: 147 sectors (73 kB), Pintos OS kernel (20)
+hda2: 4,096 sectors (2 MB), Pintos file system (21)
+hda3: 107 sectors (53 kB), Pintos scratch (22)
+filesys: using hda2
+scratch: using hda3
+Formatting file system...done.
+Boot complete.
+Extracting ustar archive from scratch device into file system...
+Putting 'exec-missing' into the file system...
+Erasing ustar archive...
+Executing 'exec-missing':
+(exec-missing) begin
+(exec-missing) exec("no-such-file"): 134522578
+(exec-missing) end
+exec-missing: exit(0)
+load: no-such-file: open failed
+Page fault at 0xfffffff3: not present error writing page in kernel context.
+Interrupt 0x0e (#PF Page-Fault Exception) at eip=0xc00279cc
+ cr2=fffffff3 error=00000002
+ eax=0000006e ebx=0000000c ecx=c010ecb4 edx=00000000
+ esi=fffffff3 edi=fffffff3 esp=00000001 ebp=c010ec40
+ cs=0008 ds=0010 es=0010 ss=3a48
+Kernel PANIC at ../../userprog/exception.c:100 in kill(): Kernel bug - unexpected interrupt in kernel
+Call stack: 0xc00284b0 0xc002b8dc 0xc002b984 0xc0021a0d 0xc0021b3f 0xc00279cc 0xc0027b68 0xc002a5e6 0xc002ae3c 0xc002121a.
+The `backtrace' program can make call stacks useful.
+Read "Backtraces" in the "Debugging Tools" chapter
+of the Pintos documentation for more information.
+Timer: 290 ticks
+Thread: 0 idle ticks, 290 kernel ticks, 0 user ticks
+hda2 (filesys): 78 reads, 218 writes
+hda3 (scratch): 106 reads, 2 writes
+Console: 1632 characters output
+Keyboard: 0 keys pressed
+Exception: 1 page faults
+Powering off...
