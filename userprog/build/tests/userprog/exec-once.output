@@ -1,6 +1,6 @@
 Copying tests/userprog/exec-once to scratch partition...
 Copying tests/userprog/child-simple to scratch partition...
-qemu -hda /tmp/gQjceYzyVh.dsk -m 4 -net none -nographic -monitor null
+qemu -hda /tmp/ZfalZwQjyB.dsk -m 4 -net none -nographic -monitor null
 PiLo hda1
 Loading.........
 Kernel command line: -q -f extract run exec-once
@@ -18,54 +18,16 @@ Formatting file system...done.
 Boot complete.
 Extracting ustar archive from scratch device into file system...
 Putting 'exec-once' into the file system...
-e.name is 
-e.name is 
-e.name is 
-e.name is 
-e.name is 
-e.name is 
-e.name is 
-e.name is 
-e.name is 
-e.name is 
-e.name is 
-e.name is 
-e.name is 
-e.name is 
-e.name is 
-e.name is 
-e.name is exec-once
 Putting 'child-simple' into the file system...
-e.name is exec-once
-e.name is 
-e.name is 
-e.name is 
-e.name is 
-e.name is 
-e.name is 
-e.name is 
-e.name is 
-e.name is 
-e.name is 
-e.name is 
-e.name is 
-e.name is 
-e.name is 
-e.name is 
-e.name is exec-once
-e.name is child-simple
 Erasing ustar archive...
 Executing 'exec-once':
-e.name is exec-once
 (exec-once) begin
-e.name is exec-once
-e.name is child-simple
 Execution of 'exec-once' complete.
-Timer: 397 ticks
-Thread: 4 idle ticks, 305 kernel ticks, 88 user ticks
-hda2 (filesys): 106 reads, 428 writes
+Timer: 454 ticks
+Thread: 2 idle ticks, 336 kernel ticks, 116 user ticks
+hda2 (filesys): 113 reads, 428 writes
 hda3 (scratch): 210 reads, 2 writes
-Console: 1389 characters output
+Console: 903 characters output
 Keyboard: 0 keys pressed
 Exception: 0 page faults
 Powering off...

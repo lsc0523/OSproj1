@@ -1,5 +1,5 @@
 Copying tests/userprog/exit to scratch partition...
-qemu -hda /tmp/9cpFiGbuzi.dsk -m 4 -net none -nographic -monitor null
+qemu -hda /tmp/pwDrK8XqXd.dsk -m 4 -net none -nographic -monitor null
 PiLo hda1
 Loading.........
 Kernel command line: -q -f extract run exit
@@ -19,15 +19,14 @@ Extracting ustar archive from scratch device into file system...
 Putting 'exit' into the file system...
 Erasing ustar archive...
 Executing 'exit':
-check
-
-
+(exit) begin
+exit: exit(57)
 Execution of 'exit' complete.
-Timer: 75 ticks
-Thread: 1 idle ticks, 74 kernel ticks, 0 user ticks
-hda2 (filesys): 26 reads, 218 writes
+Timer: 312 ticks
+Thread: 2 idle ticks, 309 kernel ticks, 1 user ticks
+hda2 (filesys): 61 reads, 218 writes
 hda3 (scratch): 106 reads, 2 writes
-Console: 820 characters output
+Console: 842 characters output
 Keyboard: 0 keys pressed
 Exception: 0 page faults
 Powering off...

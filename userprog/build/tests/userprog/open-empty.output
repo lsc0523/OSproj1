@@ -1,5 +1,5 @@
 Copying tests/userprog/open-empty to scratch partition...
-qemu -hda /tmp/Qmtk7X41R_.dsk -m 4 -net none -nographic -monitor null
+qemu -hda /tmp/ULS3adqZKY.dsk -m 4 -net none -nographic -monitor null
 PiLo hda1
 Loading.........
 Kernel command line: -q -f extract run open-empty
@@ -23,8 +23,8 @@ Executing 'open-empty':
 (open-empty) open() returned 134522603 instead of -1: FAILED
 open-empty: exit(1)
 Execution of 'open-empty' complete.
-Timer: 305 ticks
-Thread: 1 idle ticks, 304 kernel ticks, 0 user ticks
+Timer: 313 ticks
+Thread: 1 idle ticks, 312 kernel ticks, 0 user ticks
 hda2 (filesys): 61 reads, 218 writes
 hda3 (scratch): 106 reads, 2 writes
 Console: 938 characters output

@@ -1,5 +1,5 @@
 Copying tests/userprog/sc-bad-sp to scratch partition...
-qemu -hda /tmp/FSXz9bBfAr.dsk -m 4 -net none -nographic -monitor null
+qemu -hda /tmp/wKIEWFutcZ.dsk -m 4 -net none -nographic -monitor null
 PiLo hda1
 Loading.........
 Kernel command line: -q -f extract run sc-bad-sp
@@ -19,15 +19,14 @@ Extracting ustar archive from scratch device into file system...
 Putting 'sc-bad-sp' into the file system...
 Erasing ustar archive...
 Executing 'sc-bad-sp':
-check
-
-
+(sc-bad-sp) begin
+sc-bad-sp: exit(-1)
 Execution of 'sc-bad-sp' complete.
-Timer: 76 ticks
-Thread: 1 idle ticks, 75 kernel ticks, 0 user ticks
-hda2 (filesys): 26 reads, 218 writes
+Timer: 325 ticks
+Thread: 1 idle ticks, 324 kernel ticks, 0 user ticks
+hda2 (filesys): 61 reads, 218 writes
 hda3 (scratch): 106 reads, 2 writes
-Console: 840 characters output
+Console: 872 characters output
 Keyboard: 0 keys pressed
-Exception: 0 page faults
+Exception: 1 page faults
 Powering off...

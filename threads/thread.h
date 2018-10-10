@@ -103,6 +103,12 @@ struct thread
 
     /* Owned by thread.c. */
     unsigned magic;                     /* Detects stack overflow. */
+    struct list child;
+    struct thread* parent;
+    struct list_elem child_elem;
+    bool waiting;
+    int exit_flag;
+    int child_status;
   };
 
 /* If false (default), use round-robin scheduler.

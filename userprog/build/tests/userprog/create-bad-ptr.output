@@ -1,5 +1,5 @@
 Copying tests/userprog/create-bad-ptr to scratch partition...
-qemu -hda /tmp/dZCowPCthF.dsk -m 4 -net none -nographic -monitor null
+qemu -hda /tmp/XVPPwxpIh4.dsk -m 4 -net none -nographic -monitor null
 PiLo hda1
 Loading.........
 Kernel command line: -q -f extract run create-bad-ptr
@@ -24,8 +24,8 @@ Executing 'create-bad-ptr':
 (create-bad-ptr) end
 create-bad-ptr: exit(0)
 Execution of 'create-bad-ptr' complete.
-Timer: 305 ticks
-Thread: 1 idle ticks, 304 kernel ticks, 0 user ticks
+Timer: 316 ticks
+Thread: 0 idle ticks, 316 kernel ticks, 0 user ticks
 hda2 (filesys): 61 reads, 218 writes
 hda3 (scratch): 106 reads, 2 writes
 Console: 961 characters output

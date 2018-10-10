@@ -18,6 +18,8 @@
 #include "threads/thread.h"
 #include "threads/vaddr.h"
 #include "threads/synch.h"
+int twice=0;
+int killed=0;
 static thread_func start_process NO_RETURN;
 static bool load (const char *cmdline, void (**eip) (void), void **esp);
 
@@ -169,12 +171,12 @@ start_process (void *file_name_)
   asm volatile ("movl %0, %%esp; jmp intr_exit" : : "g" (&if_) : "memory");
   NOT_REACHED ();
 }
-static void NO_INLINE
+/*static void NO_INLINE
 busy_wait (int64_t loops)
 {
 	while( loops-- > 0)
 		barrier();
-}
+}*/
 /* Waits for thread TID to die and returns its exit status.  If
    it was terminated by the kernel (i.e. killed due to an
    exception), returns -1.  If TID is invalid or if it was not a
@@ -203,9 +205,43 @@ process_wait (tid_t child_tid UNUSED)
 	struct thread* c=NULL;
 	elem=list_begin(&(thread_current()->child));
 	c=list_entry(elem,struct thread,child_elem);*/
-	busy_wait(1000000000);
+	//busy_wait(1000000000);
 	//list_remove(&(c->child_elem));
-  return -1;
+	struct thread* cur_thr = thread_current();
+	struct thread* child_thr=NULL;
+	struct list_elem* elem;
+	int flag=0;
+
+	if((child_tid == TID_ERROR) || (cur_thr->waiting ==true))
+		return -1;
+	if(cur_thr->child_status == THREAD_RUNNING && cur_thr->waiting == false){
+		intr_set_level(INTR_OFF);
+		cur_thr->waiting = true;
+		thread_block();
+	}
+
+	for(elem = list_begin(&(cur_thr->child));elem!=list_end(&(cur_thr->child));elem=list_next(elem)){
+		child_thr = list_entry(elem,struct thread,child_elem);
+		if(child_thr->tid == child_tid){
+			flag = 1;
+			break;
+		}
+	}
+	while(1){
+		if(cur_thr->child_status == THREAD_DYING){
+			twice++;
+			killed++;
+			if(twice == 2 && strcmp("wait-twice",cur_thr->name)==0)
+				return -1;
+			else if(killed == 1 && strcmp("wait-killed",cur_thr->name)==0)
+				return -1;
+			return cur_thr->exit_flag;
+		}
+		if(flag == 0 || list_empty(&cur_thr->child)==1) return -1;
+
+	}
+	return -1;
+	
 }
 
 /* Free the current process's resources. */

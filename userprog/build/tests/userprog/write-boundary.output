@@ -1,6 +1,6 @@
 Copying tests/userprog/write-boundary to scratch partition...
 Copying ../../tests/userprog/sample.txt to scratch partition...
-qemu -hda /tmp/yBibSJktyp.dsk -m 4 -net none -nographic -monitor null
+qemu -hda /tmp/25sVSsiUbl.dsk -m 4 -net none -nographic -monitor null
 PiLo hda1
 Loading.........
 Kernel command line: -q -f extract run write-boundary
@@ -23,14 +23,14 @@ Erasing ustar archive...
 Executing 'write-boundary':
 (write-boundary) begin
 (write-boundary) open "sample.txt"
-(write-boundary) write() returned 134522820 instead of 239: FAILED
+(write-boundary) write() returned -1 instead of 239: FAILED
 write-boundary: exit(1)
 Execution of 'write-boundary' complete.
-Timer: 308 ticks
-Thread: 1 idle ticks, 307 kernel ticks, 0 user ticks
+Timer: 316 ticks
+Thread: 1 idle ticks, 315 kernel ticks, 0 user ticks
 hda2 (filesys): 88 reads, 232 writes
 hda3 (scratch): 112 reads, 2 writes
-Console: 1048 characters output
+Console: 1041 characters output
 Keyboard: 0 keys pressed
 Exception: 0 page faults
 Powering off...

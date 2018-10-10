@@ -1,5 +1,5 @@
 Copying tests/userprog/args-single to scratch partition...
-qemu -hda /tmp/zgcRFvWab8.dsk -m 4 -net none -nographic -monitor null
+qemu -hda /tmp/6orz5v5gRK.dsk -m 4 -net none -nographic -monitor null
 PiLo hda1
 Loading.........
 Kernel command line: -q -f extract run 'args-single onearg'
@@ -19,163 +19,19 @@ Extracting ustar archive from scratch device into file system...
 Putting 'args-single' into the file system...
 Erasing ustar archive...
 Executing 'args-single onearg':
-syscall : 9
-address :   BFFFFF28
-
-f->esp+4 is 1
-
-f->esp+8 is 134528032
-
-f->esp+12 is 13
-
-f->esp+12 is -1073741976
-
-f->esp+12 is 134513273
-
-bfffff20                          09 00 00 00 01 00 00 00 |        ........|
-bfffff30  20 bc 04 08 0d 00 00 00-68 ff ff bf 79 82 04 08 | .......h...y...|
-bfffff40  01 00 00 00 20 bc 04 08-0d 00 00 00 94 ff ff bf |.... ...........|
-bfffff50  00 00 00 00 00 00 00 00-39 a7 04 08 00 00 00 00 |........9.......|
-bfffff60  02 00 00 00 de ff ff bf-88 ff ff bf c8 82 04 08 |................|
-bfffff70  00 00 00 00 00 00 00 00-00 00 00 00 00 00 00 00 |................|
-bfffff80  00 00 00 00 94 ff ff bf-b8 ff ff bf             |............    |
 (args) begin
-syscall : 9
-address :   BFFFFF28
-
-f->esp+4 is 1
-
-f->esp+8 is 134528032
-
-f->esp+12 is 16
-
-f->esp+12 is -1073741976
-
-f->esp+12 is 134513273
-
-bfffff20                          09 00 00 00 01 00 00 00 |        ........|
-bfffff30  20 bc 04 08 10 00 00 00-68 ff ff bf 79 82 04 08 | .......h...y...|
-bfffff40  01 00 00 00 20 bc 04 08-10 00 00 00 94 ff ff bf |.... ...........|
-bfffff50  00 00 00 00 00 00 00 00-39 a7 04 08 00 00 00 00 |........9.......|
-bfffff60  02 00 00 00 de ff ff bf-88 ff ff bf c8 82 04 08 |................|
-bfffff70  00 00 00 00 00 00 00 00-00 00 00 00 00 00 00 00 |................|
-bfffff80  00 00 00 00 94 ff ff bf-b8 ff ff bf             |............    |
 (args) argc = 2
-syscall : 9
-address :   BFFFFF28
-
-f->esp+4 is 1
-
-f->esp+8 is 134528032
-
-f->esp+12 is 31
-
-f->esp+12 is -1073741976
-
-f->esp+12 is 134513273
-
-bfffff20                          09 00 00 00 01 00 00 00 |        ........|
-bfffff30  20 bc 04 08 1f 00 00 00-68 ff ff bf 79 82 04 08 | .......h...y...|
-bfffff40  01 00 00 00 20 bc 04 08-1f 00 00 00 94 ff ff bf |.... ...........|
-bfffff50  00 00 00 00 00 00 00 00-39 a7 04 08 00 00 00 00 |........9.......|
-bfffff60  02 00 00 00 de ff ff bf-88 ff ff bf c8 82 04 08 |................|
-bfffff70  00 00 00 00 00 00 00 00-00 00 00 00 00 00 00 00 |................|
-bfffff80  00 00 00 00 94 ff ff bf-b8 ff ff bf             |............    |
 (args) argv[0] = 'args-single'
-syscall : 9
-address :   BFFFFF28
-
-f->esp+4 is 1
-
-f->esp+8 is 134528032
-
-f->esp+12 is 26
-
-f->esp+12 is -1073741976
-
-f->esp+12 is 134513273
-
-bfffff20                          09 00 00 00 01 00 00 00 |        ........|
-bfffff30  20 bc 04 08 1a 00 00 00-68 ff ff bf 79 82 04 08 | .......h...y...|
-bfffff40  01 00 00 00 20 bc 04 08-1a 00 00 00 94 ff ff bf |.... ...........|
-bfffff50  00 00 00 00 00 00 00 00-39 a7 04 08 01 00 00 00 |........9.......|
-bfffff60  02 00 00 00 de ff ff bf-88 ff ff bf c8 82 04 08 |................|
-bfffff70  00 00 00 00 00 00 00 00-00 00 00 00 00 00 00 00 |................|
-bfffff80  00 00 00 00 94 ff ff bf-b8 ff ff bf             |............    |
 (args) argv[1] = 'onearg'
-syscall : 9
-address :   BFFFFF28
-
-f->esp+4 is 1
-
-f->esp+8 is 134528032
-
-f->esp+12 is 22
-
-f->esp+12 is -1073741976
-
-f->esp+12 is 134513273
-
-bfffff20                          09 00 00 00 01 00 00 00 |        ........|
-bfffff30  20 bc 04 08 16 00 00 00-68 ff ff bf 79 82 04 08 | .......h...y...|
-bfffff40  01 00 00 00 20 bc 04 08-16 00 00 00 94 ff ff bf |.... ...........|
-bfffff50  00 00 00 00 00 00 00 00-39 a7 04 08 02 00 00 00 |........9.......|
-bfffff60  02 00 00 00 de ff ff bf-88 ff ff bf c8 82 04 08 |................|
-bfffff70  00 00 00 00 00 00 00 00-00 00 00 00 00 00 00 00 |................|
-bfffff80  00 00 00 00 94 ff ff bf-b8 ff ff bf             |............    |
 (args) argv[2] = null
-syscall : 9
-address :   BFFFFF28
-
-f->esp+4 is 1
-
-f->esp+8 is 134528032
-
-f->esp+12 is 11
-
-f->esp+12 is -1073741976
-
-f->esp+12 is 134513273
-
-bfffff20                          09 00 00 00 01 00 00 00 |        ........|
-bfffff30  20 bc 04 08 0b 00 00 00-68 ff ff bf 79 82 04 08 | .......h...y...|
-bfffff40  01 00 00 00 20 bc 04 08-0b 00 00 00 94 ff ff bf |.... ...........|
-bfffff50  00 00 00 00 00 00 00 00-39 a7 04 08 03 00 00 00 |........9.......|
-bfffff60  02 00 00 00 de ff ff bf-88 ff ff bf c8 82 04 08 |................|
-bfffff70  00 00 00 00 00 00 00 00-00 00 00 00 00 00 00 00 |................|
-bfffff80  00 00 00 00 94 ff ff bf-b8 ff ff bf             |............    |
 (args) end
-syscall : 1
-address :   BFFFFF9E
-
-f->esp+4 is 0
-
-f->esp+8 is -3801088
-
-f->esp+12 is 49151
-
-f->esp+12 is 0
-
-f->esp+12 is 0
-
-bfffff90                                            01 00 |              ..|
-bfffffa0  00 00 00 00 00 00 00 00-c6 ff ff bf 00 00 00 00 |................|
-bfffffb0  00 00 00 00 00 00 00 00-ce ff ff bf 3e 87 ce ff |............>...|
-bfffffc0  ff bf 46 87 04 08 00 00-00 00 de ff ff bf 00 00 |..F.............|
-bfffffd0  00 00 00 00 00 00 02 00-00 00 de ff ff bf ed ff |................|
-bfffffe0  ff bf f9 ff ff bf 00 00-00 00 00 00 00 61 72 67 |.............arg|
-bffffff0  73 2d 73 69 6e 67 6c 65-00 6f 6e 65 61 72 67 00 |s-single.onearg.|
-c0000000  53 ff                                           |S.              |
 args-single: exit(0)
-check
-
-
 Execution of 'args-single onearg' complete.
-Timer: 317 ticks
-Thread: 1 idle ticks, 305 kernel ticks, 11 user ticks
+Timer: 335 ticks
+Thread: 0 idle ticks, 335 kernel ticks, 0 user ticks
 hda2 (filesys): 61 reads, 218 writes
 hda3 (scratch): 106 reads, 2 writes
-Console: 5821 characters output
+Console: 1005 characters output
 Keyboard: 0 keys pressed
 Exception: 0 page faults
 Powering off...

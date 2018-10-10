@@ -33,6 +33,8 @@ syscall_handler (struct intr_frame *f UNUSED)
 	if(is_kernel_vaddr(f->esp))
 		exit(-1);
 	hex_dump(f->esp,f->esp,100,1);*/
+	int *temp=f->esp;
+	struct thread* now=thread_current();
 	switch(*(uint32_t *)(f->esp))
 	{
 		case SYS_HALT:
@@ -40,6 +42,7 @@ syscall_handler (struct intr_frame *f UNUSED)
 			break;
 		case SYS_EXIT:
 			check_vaddr(f->esp+4);
+			now->parent->exit_flag=temp[1];
 			exit(*(uint32_t *)(f->esp +4));
 			break;
 		case SYS_EXEC://2
@@ -89,7 +92,10 @@ void halt(void)
 
 void exit(int status)
 {
+	struct thread* now=thread_current();
+	list_remove(&(now->child_elem));
 	printf("%s: exit(%d)\n", thread_name(),status);
+	now->parent->child_status=THREAD_DYING;
 	thread_exit();
 }
 
@@ -100,8 +106,8 @@ pid_t exec(const char *cmd)
 
 int wait(pid_t pid)
 {
-	process_wait(pid);
-	return pid;
+	return process_wait(pid);
+
 }
 
 int read(int fd, void* buffer, unsigned size)

@@ -8,11 +8,8 @@ Acceptable output:
   (exec-once) end
   exec-once: exit(0)
 Differences in `diff -u' format:
-+ e.name is exec-once
   (exec-once) begin
 - (child-simple) run
 - child-simple: exit(81)
 - (exec-once) end
 - exec-once: exit(0)
-+ e.name is exec-once
-+ e.name is child-simple
