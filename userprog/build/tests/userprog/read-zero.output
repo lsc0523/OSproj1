@@ -1,6 +1,6 @@
 Copying tests/userprog/read-zero to scratch partition...
 Copying ../../tests/userprog/sample.txt to scratch partition...
-qemu -hda /tmp/nTNw5ZobPU.dsk -m 4 -net none -nographic -monitor null
+qemu -hda /tmp/BdONAHkoGA.dsk -m 4 -net none -nographic -monitor null
 PiLo hda1
 Loading.........
 Kernel command line: -q -f extract run read-zero
@@ -26,8 +26,8 @@ Executing 'read-zero':
 (read-zero) read() returned 134522676 instead of 0: FAILED
 read-zero: exit(1)
 Execution of 'read-zero' complete.
-Timer: 319 ticks
-Thread: 3 idle ticks, 316 kernel ticks, 0 user ticks
+Timer: 306 ticks
+Thread: 2 idle ticks, 304 kernel ticks, 0 user ticks
 hda2 (filesys): 88 reads, 226 writes
 hda3 (scratch): 109 reads, 2 writes
 Console: 1005 characters output

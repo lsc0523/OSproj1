@@ -1,12 +1,12 @@
 Copying tests/userprog/args-multiple to scratch partition...
-qemu -hda /tmp/fjCxyjZiEE.dsk -m 4 -net none -nographic -monitor null
+qemu -hda /tmp/ZdMBRLFpWr.dsk -m 4 -net none -nographic -monitor null
 PiLo hda1
 Loading.........
 Kernel command line: -q -f extract run 'args-multiple some arguments for you!'
 Pintos booting with 3,968 kB RAM...
 367 pages available in kernel pool.
 367 pages available in user pool.
-Calibrating timer...  209,510,400 loops/s.
+Calibrating timer...  314,163,200 loops/s.
 hda: 5,040 sectors (2 MB), model "QM00001", serial "QEMU HARDDISK"
 hda1: 147 sectors (73 kB), Pintos OS kernel (20)
 hda2: 4,096 sectors (2 MB), Pintos file system (21)
@@ -19,22 +19,226 @@ Extracting ustar archive from scratch device into file system...
 Putting 'args-multiple' into the file system...
 Erasing ustar archive...
 Executing 'args-multiple some arguments for you!':
+syscall : 9
+address :   BFFFFF08
+
+f->esp+4 is 1
+
+f->esp+8 is 134528032
+
+f->esp+12 is 13
+
+f->esp+12 is -1073742008
+
+f->esp+12 is 134513273
+
+bfffff00                          09 00 00 00 01 00 00 00 |        ........|
+bfffff10  20 bc 04 08 0d 00 00 00-48 ff ff bf 79 82 04 08 | .......H...y...|
+bfffff20  01 00 00 00 20 bc 04 08-0d 00 00 00 74 ff ff bf |.... .......t...|
+bfffff30  00 00 00 00 00 00 00 00-39 a7 04 08 00 00 00 00 |........9.......|
+bfffff40  05 00 00 00 bf ff ff bf-68 ff ff bf c8 82 04 08 |........h.......|
+bfffff50  00 00 00 00 00 00 00 00-00 00 00 00 00 00 00 00 |................|
+bfffff60  00 00 00 00 74 ff ff bf-98 ff ff bf             |....t.......    |
 (args) begin
+syscall : 9
+address :   BFFFFF08
+
+f->esp+4 is 1
+
+f->esp+8 is 134528032
+
+f->esp+12 is 16
+
+f->esp+12 is -1073742008
+
+f->esp+12 is 134513273
+
+bfffff00                          09 00 00 00 01 00 00 00 |        ........|
+bfffff10  20 bc 04 08 10 00 00 00-48 ff ff bf 79 82 04 08 | .......H...y...|
+bfffff20  01 00 00 00 20 bc 04 08-10 00 00 00 74 ff ff bf |.... .......t...|
+bfffff30  00 00 00 00 00 00 00 00-39 a7 04 08 00 00 00 00 |........9.......|
+bfffff40  05 00 00 00 bf ff ff bf-68 ff ff bf c8 82 04 08 |........h.......|
+bfffff50  00 00 00 00 00 00 00 00-00 00 00 00 00 00 00 00 |................|
+bfffff60  00 00 00 00 74 ff ff bf-98 ff ff bf             |....t.......    |
 (args) argc = 5
+syscall : 9
+address :   BFFFFF08
+
+f->esp+4 is 1
+
+f->esp+8 is 134528032
+
+f->esp+12 is 33
+
+f->esp+12 is -1073742008
+
+f->esp+12 is 134513273
+
+bfffff00                          09 00 00 00 01 00 00 00 |        ........|
+bfffff10  20 bc 04 08 21 00 00 00-48 ff ff bf 79 82 04 08 | ...!...H...y...|
+bfffff20  01 00 00 00 20 bc 04 08-21 00 00 00 74 ff ff bf |.... ...!...t...|
+bfffff30  00 00 00 00 00 00 00 00-39 a7 04 08 00 00 00 00 |........9.......|
+bfffff40  05 00 00 00 bf ff ff bf-68 ff ff bf c8 82 04 08 |........h.......|
+bfffff50  00 00 00 00 00 00 00 00-00 00 00 00 00 00 00 00 |................|
+bfffff60  00 00 00 00 74 ff ff bf-98 ff ff bf             |....t.......    |
 (args) argv[0] = 'args-multiple'
+syscall : 9
+address :   BFFFFF08
+
+f->esp+4 is 1
+
+f->esp+8 is 134528032
+
+f->esp+12 is 24
+
+f->esp+12 is -1073742008
+
+f->esp+12 is 134513273
+
+bfffff00                          09 00 00 00 01 00 00 00 |        ........|
+bfffff10  20 bc 04 08 18 00 00 00-48 ff ff bf 79 82 04 08 | .......H...y...|
+bfffff20  01 00 00 00 20 bc 04 08-18 00 00 00 74 ff ff bf |.... .......t...|
+bfffff30  00 00 00 00 00 00 00 00-39 a7 04 08 01 00 00 00 |........9.......|
+bfffff40  05 00 00 00 bf ff ff bf-68 ff ff bf c8 82 04 08 |........h.......|
+bfffff50  00 00 00 00 00 00 00 00-00 00 00 00 00 00 00 00 |................|
+bfffff60  00 00 00 00 74 ff ff bf-98 ff ff bf             |....t.......    |
 (args) argv[1] = 'some'
+syscall : 9
+address :   BFFFFF08
+
+f->esp+4 is 1
+
+f->esp+8 is 134528032
+
+f->esp+12 is 29
+
+f->esp+12 is -1073742008
+
+f->esp+12 is 134513273
+
+bfffff00                          09 00 00 00 01 00 00 00 |        ........|
+bfffff10  20 bc 04 08 1d 00 00 00-48 ff ff bf 79 82 04 08 | .......H...y...|
+bfffff20  01 00 00 00 20 bc 04 08-1d 00 00 00 74 ff ff bf |.... .......t...|
+bfffff30  00 00 00 00 00 00 00 00-39 a7 04 08 02 00 00 00 |........9.......|
+bfffff40  05 00 00 00 bf ff ff bf-68 ff ff bf c8 82 04 08 |........h.......|
+bfffff50  00 00 00 00 00 00 00 00-00 00 00 00 00 00 00 00 |................|
+bfffff60  00 00 00 00 74 ff ff bf-98 ff ff bf             |....t.......    |
 (args) argv[2] = 'arguments'
+syscall : 9
+address :   BFFFFF08
+
+f->esp+4 is 1
+
+f->esp+8 is 134528032
+
+f->esp+12 is 23
+
+f->esp+12 is -1073742008
+
+f->esp+12 is 134513273
+
+bfffff00                          09 00 00 00 01 00 00 00 |        ........|
+bfffff10  20 bc 04 08 17 00 00 00-48 ff ff bf 79 82 04 08 | .......H...y...|
+bfffff20  01 00 00 00 20 bc 04 08-17 00 00 00 74 ff ff bf |.... .......t...|
+bfffff30  00 00 00 00 00 00 00 00-39 a7 04 08 03 00 00 00 |........9.......|
+bfffff40  05 00 00 00 bf ff ff bf-68 ff ff bf c8 82 04 08 |........h.......|
+bfffff50  00 00 00 00 00 00 00 00-00 00 00 00 00 00 00 00 |................|
+bfffff60  00 00 00 00 74 ff ff bf-98 ff ff bf             |....t.......    |
 (args) argv[3] = 'for'
+syscall : 9
+address :   BFFFFF08
+
+f->esp+4 is 1
+
+f->esp+8 is 134528032
+
+f->esp+12 is 24
+
+f->esp+12 is -1073742008
+
+f->esp+12 is 134513273
+
+bfffff00                          09 00 00 00 01 00 00 00 |        ........|
+bfffff10  20 bc 04 08 18 00 00 00-48 ff ff bf 79 82 04 08 | .......H...y...|
+bfffff20  01 00 00 00 20 bc 04 08-18 00 00 00 74 ff ff bf |.... .......t...|
+bfffff30  00 00 00 00 00 00 00 00-39 a7 04 08 04 00 00 00 |........9.......|
+bfffff40  05 00 00 00 bf ff ff bf-68 ff ff bf c8 82 04 08 |........h.......|
+bfffff50  00 00 00 00 00 00 00 00-00 00 00 00 00 00 00 00 |................|
+bfffff60  00 00 00 00 74 ff ff bf-98 ff ff bf             |....t.......    |
 (args) argv[4] = 'you!'
+syscall : 9
+address :   BFFFFF08
+
+f->esp+4 is 1
+
+f->esp+8 is 134528032
+
+f->esp+12 is 22
+
+f->esp+12 is -1073742008
+
+f->esp+12 is 134513273
+
+bfffff00                          09 00 00 00 01 00 00 00 |        ........|
+bfffff10  20 bc 04 08 16 00 00 00-48 ff ff bf 79 82 04 08 | .......H...y...|
+bfffff20  01 00 00 00 20 bc 04 08-16 00 00 00 74 ff ff bf |.... .......t...|
+bfffff30  00 00 00 00 00 00 00 00-39 a7 04 08 05 00 00 00 |........9.......|
+bfffff40  05 00 00 00 bf ff ff bf-68 ff ff bf c8 82 04 08 |........h.......|
+bfffff50  00 00 00 00 00 00 00 00-00 00 00 00 00 00 00 00 |................|
+bfffff60  00 00 00 00 74 ff ff bf-98 ff ff bf             |....t.......    |
 (args) argv[5] = null
+syscall : 9
+address :   BFFFFF08
+
+f->esp+4 is 1
+
+f->esp+8 is 134528032
+
+f->esp+12 is 11
+
+f->esp+12 is -1073742008
+
+f->esp+12 is 134513273
+
+bfffff00                          09 00 00 00 01 00 00 00 |        ........|
+bfffff10  20 bc 04 08 0b 00 00 00-48 ff ff bf 79 82 04 08 | .......H...y...|
+bfffff20  01 00 00 00 20 bc 04 08-0b 00 00 00 74 ff ff bf |.... .......t...|
+bfffff30  00 00 00 00 00 00 00 00-39 a7 04 08 06 00 00 00 |........9.......|
+bfffff40  05 00 00 00 bf ff ff bf-68 ff ff bf c8 82 04 08 |........h.......|
+bfffff50  00 00 00 00 00 00 00 00-00 00 00 00 00 00 00 00 |................|
+bfffff60  00 00 00 00 74 ff ff bf-98 ff ff bf             |....t.......    |
 (args) end
+syscall : 1
+address :   BFFFFF7F
+
+f->esp+4 is 0
+
+f->esp+8 is -22784
+
+f->esp+12 is 191
+
+f->esp+12 is 0
+
+f->esp+12 is 0
+
+bfffff70                                               01 |               .|
+bfffff80  00 00 00 00 00 00 00 00-a7 ff ff bf 00 00 00 00 |................|
+bfffff90  00 00 00 00 00 00 00 00-af ff ff bf 3e 87 04 af |............>...|
+bfffffa0  ff ff bf 46 87 04 08 00-00 00 00 bf ff ff bf 00 |...F............|
+bfffffb0  00 00 00 00 00 00 00 05-00 00 00 bf ff ff bf da |................|
+bfffffc0  ff ff bf e8 ff ff bf ed-ff ff bf f7 ff ff bf fb |................|
+bfffffd0  ff ff bf 00 00 00 00 00-00 00 61 72 67 73 2d 6d |..........args-m|
+bfffffe0  75 6c 74                                        |ult             |
 args-multiple: exit(0)
+check
+
+
 Execution of 'args-multiple some arguments for you!' complete.
-Timer: 363 ticks
-Thread: 3 idle ticks, 360 kernel ticks, 0 user ticks
+Timer: 321 ticks
+Thread: 0 idle ticks, 308 kernel ticks, 13 user ticks
 hda2 (filesys): 61 reads, 218 writes
 hda3 (scratch): 106 reads, 2 writes
-Console: 1142 characters output
+Console: 7988 characters output
 Keyboard: 0 keys pressed
 Exception: 0 page faults
 Powering off...

@@ -199,8 +199,12 @@ process_wait (tid_t child_tid UNUSED)
 			return t->exit_status;
 	}
 	//busy_waiting();*/
+	/*struct list_elem* elem;
+	struct thread* c=NULL;
+	elem=list_begin(&(thread_current()->child));
+	c=list_entry(elem,struct thread,child_elem);*/
 	busy_wait(1000000000);
-	
+	//list_remove(&(c->child_elem));
   return -1;
 }
 

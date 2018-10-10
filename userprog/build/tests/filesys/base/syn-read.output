@@ -1,6 +1,6 @@
 Copying tests/filesys/base/syn-read to scratch partition...
 Copying tests/filesys/base/child-syn-read to scratch partition...
-qemu -hda /tmp/DLd9AsTx_f.dsk -m 4 -net none -nographic -monitor null
+qemu -hda /tmp/r_EfByHDpy.dsk -m 4 -net none -nographic -monitor null
 PiLo hda1
 Loading.........
 Kernel command line: -q -f extract run syn-read
@@ -37,22 +37,29 @@ Executing 'syn-read':
 (syn-read) exec child 9 of 10: "child-syn-read 8"
 (syn-read) exec child 10 of 10: "child-syn-read 9"
 load: child-syn-read: open failed
-Page fault at 0xfffffffe: not present error writing page in kernel context.
-Interrupt 0x0e (#PF Page-Fault Exception) at eip=0xc00279cc
- cr2=fffffffe error=00000002
- eax=00000031 ebx=00000001 ecx=c0110cc3 edx=00000000
- esi=fffffffe edi=fffffffe esp=00000002 ebp=c0110c40
- cs=0008 ds=0010 es=0010 ss=3a48
-Kernel PANIC at ../../userprog/exception.c:100 in kill(): Kernel bug - unexpected interrupt in kernel
-Call stack: 0xc00284b0 0xc002b8dc 0xc002b984 0xc0021a0d 0xc0021b3f 0xc00279cc 0xc0027b68 0xc002a5e6 0xc002ae3c 0xc002121a.
-The `backtrace' program can make call stacks useful.
-Read "Backtraces" in the "Debugging Tools" chapter
-of the Pintos documentation for more information.
-Timer: 248 ticks
-Thread: 2 idle ticks, 242 kernel ticks, 4 user ticks
-hda2 (filesys): 90 reads, 472 writes
+child-syn-read: exit(-1)
+load: child-syn-read: open failed
+child-syn-read: exit(-1)
+load: child-syn-read: open failed
+child-syn-read: exit(-1)
+load: child-syn-read: open failed
+child-syn-read: exit(-1)
+load: child-syn-read: open failed
+child-syn-read: exit(-1)
+load: child-syn-read: open failed
+child-syn-read: exit(-1)
+load: child-syn-read: open failed
+child-syn-read: exit(-1)
+load: child-syn-read: open failed
+child-syn-read: exit(-1)
+load: child-syn-read: open failed
+child-syn-read: exit(-1)
+Execution of 'syn-read' complete.
+Timer: 383 ticks
+Thread: 3 idle ticks, 308 kernel ticks, 73 user ticks
+hda2 (filesys): 106 reads, 472 writes
 hda3 (scratch): 232 reads, 2 writes
-Console: 2177 characters output
+Console: 2027 characters output
 Keyboard: 0 keys pressed
-Exception: 1 page faults
+Exception: 9 page faults
 Powering off...

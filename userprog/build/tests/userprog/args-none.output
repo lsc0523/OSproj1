@@ -1,5 +1,5 @@
 Copying tests/userprog/args-none to scratch partition...
-qemu -hda /tmp/kGqfi8wlmh.dsk -m 4 -net none -nographic -monitor null
+qemu -hda /tmp/WYUCogEajN.dsk -m 4 -net none -nographic -monitor null
 PiLo hda1
 Loading.........
 Kernel command line: -q -f extract run args-none
@@ -19,18 +19,141 @@ Extracting ustar archive from scratch device into file system...
 Putting 'args-none' into the file system...
 Erasing ustar archive...
 Executing 'args-none':
+syscall : 9
+address :   BFFFFF28
+
+f->esp+4 is 1
+
+f->esp+8 is 134528032
+
+f->esp+12 is 13
+
+f->esp+12 is -1073741976
+
+f->esp+12 is 134513273
+
+bfffff20                          09 00 00 00 01 00 00 00 |        ........|
+bfffff30  20 bc 04 08 0d 00 00 00-68 ff ff bf 79 82 04 08 | .......h...y...|
+bfffff40  01 00 00 00 20 bc 04 08-0d 00 00 00 94 ff ff bf |.... ...........|
+bfffff50  00 00 00 00 00 00 00 00-39 a7 04 08 00 00 00 00 |........9.......|
+bfffff60  01 00 00 00 eb ff ff bf-88 ff ff bf c8 82 04 08 |................|
+bfffff70  00 00 00 00 00 00 00 00-00 00 00 00 00 00 00 00 |................|
+bfffff80  00 00 00 00 94 ff ff bf-b8 ff ff bf             |............    |
 (args) begin
+syscall : 9
+address :   BFFFFF28
+
+f->esp+4 is 1
+
+f->esp+8 is 134528032
+
+f->esp+12 is 16
+
+f->esp+12 is -1073741976
+
+f->esp+12 is 134513273
+
+bfffff20                          09 00 00 00 01 00 00 00 |        ........|
+bfffff30  20 bc 04 08 10 00 00 00-68 ff ff bf 79 82 04 08 | .......h...y...|
+bfffff40  01 00 00 00 20 bc 04 08-10 00 00 00 94 ff ff bf |.... ...........|
+bfffff50  00 00 00 00 00 00 00 00-39 a7 04 08 00 00 00 00 |........9.......|
+bfffff60  01 00 00 00 eb ff ff bf-88 ff ff bf c8 82 04 08 |................|
+bfffff70  00 00 00 00 00 00 00 00-00 00 00 00 00 00 00 00 |................|
+bfffff80  00 00 00 00 94 ff ff bf-b8 ff ff bf             |............    |
 (args) argc = 1
+syscall : 9
+address :   BFFFFF28
+
+f->esp+4 is 1
+
+f->esp+8 is 134528032
+
+f->esp+12 is 29
+
+f->esp+12 is -1073741976
+
+f->esp+12 is 134513273
+
+bfffff20                          09 00 00 00 01 00 00 00 |        ........|
+bfffff30  20 bc 04 08 1d 00 00 00-68 ff ff bf 79 82 04 08 | .......h...y...|
+bfffff40  01 00 00 00 20 bc 04 08-1d 00 00 00 94 ff ff bf |.... ...........|
+bfffff50  00 00 00 00 00 00 00 00-39 a7 04 08 00 00 00 00 |........9.......|
+bfffff60  01 00 00 00 eb ff ff bf-88 ff ff bf c8 82 04 08 |................|
+bfffff70  00 00 00 00 00 00 00 00-00 00 00 00 00 00 00 00 |................|
+bfffff80  00 00 00 00 94 ff ff bf-b8 ff ff bf             |............    |
 (args) argv[0] = 'args-none'
+syscall : 9
+address :   BFFFFF28
+
+f->esp+4 is 1
+
+f->esp+8 is 134528032
+
+f->esp+12 is 22
+
+f->esp+12 is -1073741976
+
+f->esp+12 is 134513273
+
+bfffff20                          09 00 00 00 01 00 00 00 |        ........|
+bfffff30  20 bc 04 08 16 00 00 00-68 ff ff bf 79 82 04 08 | .......h...y...|
+bfffff40  01 00 00 00 20 bc 04 08-16 00 00 00 94 ff ff bf |.... ...........|
+bfffff50  00 00 00 00 00 00 00 00-39 a7 04 08 01 00 00 00 |........9.......|
+bfffff60  01 00 00 00 eb ff ff bf-88 ff ff bf c8 82 04 08 |................|
+bfffff70  00 00 00 00 00 00 00 00-00 00 00 00 00 00 00 00 |................|
+bfffff80  00 00 00 00 94 ff ff bf-b8 ff ff bf             |............    |
 (args) argv[1] = null
+syscall : 9
+address :   BFFFFF28
+
+f->esp+4 is 1
+
+f->esp+8 is 134528032
+
+f->esp+12 is 11
+
+f->esp+12 is -1073741976
+
+f->esp+12 is 134513273
+
+bfffff20                          09 00 00 00 01 00 00 00 |        ........|
+bfffff30  20 bc 04 08 0b 00 00 00-68 ff ff bf 79 82 04 08 | .......h...y...|
+bfffff40  01 00 00 00 20 bc 04 08-0b 00 00 00 94 ff ff bf |.... ...........|
+bfffff50  00 00 00 00 00 00 00 00-39 a7 04 08 02 00 00 00 |........9.......|
+bfffff60  01 00 00 00 eb ff ff bf-88 ff ff bf c8 82 04 08 |................|
+bfffff70  00 00 00 00 00 00 00 00-00 00 00 00 00 00 00 00 |................|
+bfffff80  00 00 00 00 94 ff ff bf-b8 ff ff bf             |............    |
 (args) end
+syscall : 1
+address :   BFFFFFAB
+
+f->esp+4 is 0
+
+f->esp+8 is 0
+
+f->esp+12 is -9472
+
+f->esp+12 is 75972287
+
+f->esp+12 is 8
+
+bfffffa0                                   01 00 00 00 00 |           .....|
+bfffffb0  00 00 00 00 00 00 00 00-db ff ff bf 3e 87 04 08 |............>...|
+bfffffc0  00 00 00 00 00 00 00 00-00 00 00 db ff ff bf 46 |...............F|
+bfffffd0  87 04 08 00 00 00 00 eb-ff ff bf 00 00 00 00 00 |................|
+bfffffe0  00 00 00 01 00 00 00 eb-ff ff bf f6 ff ff bf 00 |................|
+bffffff0  00 00 00 00 00 00 61 72-67 73 2d 6e 6f 6e 65 00 |......args-none.|
+c0000000  53 ff 00 f0 53 ff 00 f0-c3 e2 00 f0 53 ff 00    |S...S.......S.. |
 args-none: exit(0)
+check
+
+
 Execution of 'args-none' complete.
-Timer: 323 ticks
-Thread: 0 idle ticks, 323 kernel ticks, 0 user ticks
+Timer: 314 ticks
+Thread: 1 idle ticks, 304 kernel ticks, 9 user ticks
 hda2 (filesys): 61 reads, 218 writes
 hda3 (scratch): 106 reads, 2 writes
-Console: 944 characters output
+Console: 5004 characters output
 Keyboard: 0 keys pressed
 Exception: 0 page faults
 Powering off...

@@ -1,13 +1,13 @@
 Copying tests/filesys/base/syn-write to scratch partition...
 Copying tests/filesys/base/child-syn-wrt to scratch partition...
-qemu -hda /tmp/L7ouo7RwO9.dsk -m 4 -net none -nographic -monitor null
+qemu -hda /tmp/sPZ3WBjqgW.dsk -m 4 -net none -nographic -monitor null
 PiLo hda1
 Loading.........
 Kernel command line: -q -f extract run syn-write
 Pintos booting with 3,968 kB RAM...
 367 pages available in kernel pool.
 367 pages available in user pool.
-Calibrating timer...  419,020,800 loops/s.
+Calibrating timer...  314,163,200 loops/s.
 hda: 5,040 sectors (2 MB), model "QM00001", serial "QEMU HARDDISK"
 hda1: 147 sectors (73 kB), Pintos OS kernel (20)
 hda2: 4,096 sectors (2 MB), Pintos file system (21)
@@ -34,22 +34,29 @@ Executing 'syn-write':
 (syn-write) exec child 9 of 10: "child-syn-wrt 8"
 (syn-write) exec child 10 of 10: "child-syn-wrt 9"
 load: child-syn-wrt: open failed
-Page fault at 0xfffffffe: not present error writing page in kernel context.
-Interrupt 0x0e (#PF Page-Fault Exception) at eip=0xc00279cc
- cr2=fffffffe error=00000002
- eax=00000031 ebx=00000001 ecx=c0110cc2 edx=00000000
- esi=fffffffe edi=fffffffe esp=00000002 ebp=c0110c40
- cs=0008 ds=0010 es=0010 ss=3a48
-Kernel PANIC at ../../userprog/exception.c:100 in kill(): Kernel bug - unexpected interrupt in kernel
-Call stack: 0xc00284b0 0xc002b8dc 0xc002b984 0xc0021a0d 0xc0021b3f 0xc00279cc 0xc0027b68 0xc002a5e6 0xc002ae3c 0xc002121a.
-The `backtrace' program can make call stacks useful.
-Read "Backtraces" in the "Debugging Tools" chapter
-of the Pintos documentation for more information.
-Timer: 245 ticks
-Thread: 2 idle ticks, 239 kernel ticks, 4 user ticks
-hda2 (filesys): 90 reads, 472 writes
+child-syn-wrt: exit(-1)
+load: child-syn-wrt: open failed
+child-syn-wrt: exit(-1)
+load: child-syn-wrt: open failed
+child-syn-wrt: exit(-1)
+load: child-syn-wrt: open failed
+child-syn-wrt: exit(-1)
+load: child-syn-wrt: open failed
+child-syn-wrt: exit(-1)
+load: child-syn-wrt: open failed
+child-syn-wrt: exit(-1)
+load: child-syn-wrt: open failed
+child-syn-wrt: exit(-1)
+load: child-syn-wrt: open failed
+child-syn-wrt: exit(-1)
+load: child-syn-wrt: open failed
+child-syn-wrt: exit(-1)
+Execution of 'syn-write' complete.
+Timer: 388 ticks
+Thread: 1 idle ticks, 310 kernel ticks, 77 user ticks
+hda2 (filesys): 107 reads, 472 writes
 hda3 (scratch): 232 reads, 2 writes
-Console: 2110 characters output
+Console: 1944 characters output
 Keyboard: 0 keys pressed
-Exception: 1 page faults
+Exception: 9 page faults
 Powering off...

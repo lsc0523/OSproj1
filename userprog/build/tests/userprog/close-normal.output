@@ -1,6 +1,6 @@
 Copying tests/userprog/close-normal to scratch partition...
 Copying ../../tests/userprog/sample.txt to scratch partition...
-qemu -hda /tmp/ifIe7ErQLZ.dsk -m 4 -net none -nographic -monitor null
+qemu -hda /tmp/9RHcAFjX73.dsk -m 4 -net none -nographic -monitor null
 PiLo hda1
 Loading.........
 Kernel command line: -q -f extract run close-normal
@@ -11,7 +11,7 @@ Calibrating timer...  314,163,200 loops/s.
 hda: 5,040 sectors (2 MB), model "QM00001", serial "QEMU HARDDISK"
 hda1: 147 sectors (73 kB), Pintos OS kernel (20)
 hda2: 4,096 sectors (2 MB), Pintos file system (21)
-hda3: 110 sectors (55 kB), Pintos scratch (22)
+hda3: 109 sectors (54 kB), Pintos scratch (22)
 filesys: using hda2
 scratch: using hda3
 Formatting file system...done.
@@ -27,10 +27,10 @@ Executing 'close-normal':
 (close-normal) end
 close-normal: exit(0)
 Execution of 'close-normal' complete.
-Timer: 317 ticks
-Thread: 2 idle ticks, 315 kernel ticks, 0 user ticks
-hda2 (filesys): 86 reads, 226 writes
-hda3 (scratch): 109 reads, 2 writes
+Timer: 306 ticks
+Thread: 1 idle ticks, 305 kernel ticks, 0 user ticks
+hda2 (filesys): 86 reads, 224 writes
+hda3 (scratch): 108 reads, 2 writes
 Console: 1020 characters output
 Keyboard: 0 keys pressed
 Exception: 0 page faults

@@ -1,5 +1,5 @@
 Copying tests/filesys/base/lg-seq-block to scratch partition...
-qemu -hda /tmp/ZbHJD90Ih_.dsk -m 4 -net none -nographic -monitor null
+qemu -hda /tmp/FB8vYM8m13.dsk -m 4 -net none -nographic -monitor null
 PiLo hda1
 Loading.........
 Kernel command line: -q -f extract run lg-seq-block
@@ -26,8 +26,8 @@ Executing 'lg-seq-block':
 (lg-seq-block) write 513 bytes at offset 0 in "noodle" failed: FAILED
 lg-seq-block: exit(1)
 Execution of 'lg-seq-block' complete.
-Timer: 316 ticks
-Thread: 1 idle ticks, 315 kernel ticks, 0 user ticks
+Timer: 309 ticks
+Thread: 1 idle ticks, 308 kernel ticks, 0 user ticks
 hda2 (filesys): 63 reads, 226 writes
 hda3 (scratch): 110 reads, 2 writes
 Console: 1051 characters output
