@@ -57,6 +57,8 @@ process_execute (const char *file_name)
     palloc_free_page (fn_copy); 
   return tid;
 }
+
+
 /*스택(esp)에 Word를 Parsing해서 쌓아준다*/
 void push_stack(char* word,void** stack)
 {
@@ -151,11 +153,11 @@ start_process (void *file_name_)
   if_.gs = if_.fs = if_.es = if_.ds = if_.ss = SEL_UDSEG;
   if_.cs = SEL_UCSEG;
   if_.eflags = FLAG_IF | FLAG_MBS;
-  printf("*******start_process : %s*********\n",input_file);
   success = load (input_file, &if_.eip, &if_.esp);
 
   //Now, 우린 파싱을 더해서 esp에 넣을거야
   push_stack(file_name,&if_.esp);
+  //construct_esp(file_name,&if_.esp);
   //hex_dump(if_.esp,if_.esp,100,true);
 	  
   
@@ -365,7 +367,6 @@ static bool load_segment (struct file *file, off_t ofs, uint8_t *upage,
 bool
 load (const char *file_name, void (**eip) (void), void **esp) 
 {
-	printf("*********load : %s*******\n",file_name);
   struct thread *t = thread_current ();
   struct Elf32_Ehdr ehdr;
   struct file *file = NULL;

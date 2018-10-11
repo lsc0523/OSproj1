@@ -100,7 +100,6 @@ lookup (const struct dir *dir, const char *name,
 
   for (ofs = 0; inode_read_at (dir->inode, &e, sizeof e, ofs) == sizeof e;
        ofs += sizeof e){
-	  printf("*************%s************\n",e.name);
     if (e.in_use && !strcmp (name, e.name)) 
       {
         if (ep != NULL)
@@ -126,7 +125,6 @@ dir_lookup (const struct dir *dir, const char *name,
   ASSERT (name != NULL);
 
   if (lookup (dir, name, &e, NULL)){
-	printf("********* lookup : %s ******",e.name);
     *inode = inode_open (e.inode_sector);
   }
   else

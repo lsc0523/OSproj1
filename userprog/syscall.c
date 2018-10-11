@@ -22,7 +22,7 @@ check_vaddr(void* esp)
 	static void
 syscall_handler (struct intr_frame *f UNUSED) 
 {
-	printf("syscall : %d\n",*(uint32_t *)(f->esp));
+//	printf("syscall : %d\n",*(uint32_t *)(f->esp));
 	/*printf("address : %10X\n\n",f->esp);
 	printf("f->esp+4 is %d\n\n",*(uint32_t*)(f->esp +4));
 	printf("f->esp+8 is %d\n\n",*(uint32_t*)(f->esp+8));
@@ -32,7 +32,7 @@ syscall_handler (struct intr_frame *f UNUSED)
 
 	if(is_kernel_vaddr(f->esp))
 		exit(-1);
-	hex_dump(f->esp,f->esp,100,1);
+//	hex_dump(f->esp,f->esp,100,1);
 	int *temp=f->esp;
 	struct thread* now=thread_current();
 	switch(*(uint32_t *)(f->esp))
@@ -93,15 +93,23 @@ void halt(void)
 void exit(int status)
 {
 	struct thread* now=thread_current();
-	list_remove(&(now->child_elem));
+	list_remove(&(now->child_elem));/*
 	printf("%s: exit(%d)\n", thread_name(),status);
 	now->parent->child_status=THREAD_DYING;
+	thread_exit();*/
+	if(now->parent!=NULL)
+	{
+		now->parent->child_status=THREAD_DYING;
+		now->parent->waiting=false;
+	}
+	printf("%s: exit(%d)\n",thread_name(),status);
 	thread_exit();
+
 }
 
 pid_t exec(const char *cmd)
 {
-	printf("********* syscall : %s *******\n",cmd);
+//	printf("********* syscall : %s *******\n",cmd);
 	return process_execute(cmd);
 }
 

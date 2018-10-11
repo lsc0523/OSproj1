@@ -185,9 +185,11 @@ thread_create (const char *name, int priority,
   init_thread (t, name, priority);
   tid = t->tid = allocate_tid ();
   t->parent=thread_current();
-  t->parent->child_status = THREAD_RUNNING;
-  t->child_status=THREAD_BLOCKED;
-  list_push_back(&(t->parent->child),&(t->child_elem));
+  if(t->parent!=NULL){
+	  t->parent->child_status = THREAD_RUNNING;
+	  t->child_status=THREAD_BLOCKED;
+	  list_push_back(&(t->parent->child),&(t->child_elem));
+  }
   /* Prepare thread for first run by initializing its stack.
      Do this atomically so intermediate values for the 'stack' 
      member cannot be observed. */
@@ -212,7 +214,6 @@ thread_create (const char *name, int priority,
 
   /* Add to run queue. */
   thread_unblock (t);
-  printf("******thread_create**********\n");
   return tid;
 }
 
@@ -295,18 +296,18 @@ thread_exit (void)
 
 #ifdef USERPROG
   process_exit ();
-  list_remove(&thread_current()->allelem);
+  //list_remove(&thread_current()->allelem);
   if(thread_current()->parent->status == THREAD_BLOCKED)
 	  thread_unblock(thread_current()->parent);
-  thread_current()->status=THREAD_DYING;
+  //thread_current()->status=THREAD_DYING;
 #endif
 
   /* Remove thread from all threads list, set our status to dying,
      and schedule another process.  That process will destroy us
      when it calls thread_schedule_tail(). */
   intr_disable ();
-  //list_remove (&thread_current()->allelem);
-  //thread_current ()->status = THREAD_DYING;
+  list_remove (&thread_current()->allelem);
+  thread_current ()->status = THREAD_DYING;
   schedule ();
   NOT_REACHED ();
 }
@@ -478,6 +479,7 @@ init_thread (struct thread *t, const char *name, int priority)
   t->magic = THREAD_MAGIC;
   list_push_back (&all_list, &t->allelem);
   list_init(&(t->child));
+  t->waiting=false;
  /*#ifdef USERPROG
   list_init(&(t->child));
   list_push_back(&(running_thread()->child),&(t->child_elem));
