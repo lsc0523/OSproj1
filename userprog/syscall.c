@@ -22,17 +22,17 @@ check_vaddr(void* esp)
 	static void
 syscall_handler (struct intr_frame *f UNUSED) 
 {
-	/*printf("syscall : %d\n",*(uint32_t *)(f->esp));
-	printf("address : %10X\n\n",f->esp);
+	printf("syscall : %d\n",*(uint32_t *)(f->esp));
+	/*printf("address : %10X\n\n",f->esp);
 	printf("f->esp+4 is %d\n\n",*(uint32_t*)(f->esp +4));
 	printf("f->esp+8 is %d\n\n",*(uint32_t*)(f->esp+8));
 	printf("f->esp+12 is %d\n\n",*(uint32_t*)(f->esp+12));
 	printf("f->esp+12 is %d\n\n",*(uint32_t*)(f->esp+16));
-	printf("f->esp+12 is %d\n\n",*(uint32_t*)(f->esp+20));
+	printf("f->esp+12 is %d\n\n",*(uint32_t*)(f->esp+20));*/
 
 	if(is_kernel_vaddr(f->esp))
 		exit(-1);
-	hex_dump(f->esp,f->esp,100,1);*/
+	hex_dump(f->esp,f->esp,100,1);
 	int *temp=f->esp;
 	struct thread* now=thread_current();
 	switch(*(uint32_t *)(f->esp))
@@ -101,6 +101,7 @@ void exit(int status)
 
 pid_t exec(const char *cmd)
 {
+	printf("********* syscall : %s *******\n",cmd);
 	return process_execute(cmd);
 }
 

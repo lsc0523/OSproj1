@@ -133,6 +133,7 @@ start_process (void *file_name_)
   bool success;
   
 
+  
   /*parsing only execution name of file_name*/
   int i;
   char input_file[256];
@@ -150,6 +151,7 @@ start_process (void *file_name_)
   if_.gs = if_.fs = if_.es = if_.ds = if_.ss = SEL_UDSEG;
   if_.cs = SEL_UCSEG;
   if_.eflags = FLAG_IF | FLAG_MBS;
+  printf("*******start_process : %s*********\n",input_file);
   success = load (input_file, &if_.eip, &if_.esp);
 
   //Now, 우린 파싱을 더해서 esp에 넣을거야
@@ -363,6 +365,7 @@ static bool load_segment (struct file *file, off_t ofs, uint8_t *upage,
 bool
 load (const char *file_name, void (**eip) (void), void **esp) 
 {
+	printf("*********load : %s*******\n",file_name);
   struct thread *t = thread_current ();
   struct Elf32_Ehdr ehdr;
   struct file *file = NULL;

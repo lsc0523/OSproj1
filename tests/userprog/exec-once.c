@@ -7,5 +7,6 @@
 void
 test_main (void) 
 {
+	printf("*****************check**************\n");
   wait (exec ("child-simple"));
 }
