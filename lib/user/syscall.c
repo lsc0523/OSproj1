@@ -186,8 +186,8 @@ inumber (int fd)
 
 int pibonacci(int n){
 	
-	printf("lib/usr/syscall.c\n");
-	
+	if(n==0)
+		return 0;
 	if(n==1)
 		return 1;
 	if(n==2)
@@ -206,6 +206,5 @@ int pibonacci(int n){
 }
 
 int sum_of_four_integers(int a,int b,int c,int d){
-	printf("lib/usr/syscall.c\n");
 	return a+b+c+d;
 }

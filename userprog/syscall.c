@@ -22,7 +22,7 @@ check_vaddr(void* esp)
 	static void
 syscall_handler (struct intr_frame *f UNUSED) 
 {
-//	printf("syscall : %d\n",*(uint32_t *)(f->esp));
+	//printf("syscall : %d\n",*(uint32_t *)(f->esp));
 	/*printf("address : %10X\n\n",f->esp);
 	printf("f->esp+4 is %d\n\n",*(uint32_t*)(f->esp +4));
 	printf("f->esp+8 is %d\n\n",*(uint32_t*)(f->esp+8));
@@ -32,7 +32,7 @@ syscall_handler (struct intr_frame *f UNUSED)
 
 	if(is_kernel_vaddr(f->esp))
 		exit(-1);
-//	hex_dump(f->esp,f->esp,100,1);
+	//hex_dump(f->esp,f->esp,100,1);
 	int *temp=f->esp;
 	struct thread* now=thread_current();
 	switch(*(uint32_t *)(f->esp))
@@ -79,9 +79,9 @@ syscall_handler (struct intr_frame *f UNUSED)
 			break;
 		case SYS_CLOSE:
 			break;
-		case SYS_SUM:
-			pibonacci();
-			sum_of_four_integers();
+		/*case SYS_SUM:
+			f->eax=pibonacci((int)*(uint32_t *)(f->esp+4));
+			f->eax=sum_of_four_integers((int)*(uint32_t *)(f->esp+4),(int)*(uint32_t *)(f->esp+8),(int)*(uint32_t *)(f->esp+12),(int)*(uint32_t *)(f->esp+16));*/
 			break;
 
 	}
@@ -147,15 +147,17 @@ int write(int fd,const void *buffer, unsigned size)
 	}
 	return -1;
 }
-
+/*
 int pibonacci(int n){
+	if(n==0)
+		return 0;
 	if(n==1)
 		return 1;
 	if(n==2)
 		return 1;
 	
-	int n1=1, n2=1,temp;
-	int(i=0;i<n-2;i++){
+	int i,n1=1,n2=1,temp;
+	for(i=0;i<n-2;i++){
 		temp = n1+n2;
 		n1 = n2;
 		n2 = temp;
@@ -166,4 +168,4 @@ int pibonacci(int n){
 
 int sum_of_four_integers(int a,int b,int c,int d){
 	return a+b+c+d;
-}
+}*/
