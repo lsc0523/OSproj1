@@ -1,3 +1,4 @@
+#include <stdio.h>
 #include <syscall.h>
 #include "../syscall-nr.h"
 
@@ -181,4 +182,30 @@ int
 inumber (int fd) 
 {
   return syscall1 (SYS_INUMBER, fd);
+}
+
+int pibonacci(int n){
+	
+	printf("lib/usr/syscall.c\n");
+	
+	if(n==1)
+		return 1;
+	if(n==2)
+		return 1;
+
+	int i, n1=1, n2=1, temp;
+
+	for(i=0;i<n-2;i++)
+	{
+		temp = n1 + n2;
+		n1 = n2;
+		n2 = temp;
+	}
+
+	return temp;
+}
+
+int sum_of_four_integers(int a,int b,int c,int d){
+	printf("lib/usr/syscall.c\n");
+	return a+b+c+d;
 }

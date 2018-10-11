@@ -6,6 +6,5 @@
 void
 test_main (void) 
 {
-	printf("******************\n");
   wait (exec ("child-args childarg"));
 }

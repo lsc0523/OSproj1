@@ -1,5 +1,5 @@
 Copying tests/userprog/bad-read2 to scratch partition...
-qemu -hda /tmp/0vvk6i7d63.dsk -m 4 -net none -nographic -monitor null
+qemu -hda /tmp/RO9rEQgBHg.dsk -m 4 -net none -nographic -monitor null
 PiLo hda1
 Loading.........
 Kernel command line: -q -f extract run bad-read2
@@ -23,7 +23,7 @@ Executing 'bad-read2':
 bad-read2: exit(-1)
 Execution of 'bad-read2' complete.
 Timer: 76 ticks
-Thread: 1 idle ticks, 74 kernel ticks, 1 user ticks
+Thread: 2 idle ticks, 73 kernel ticks, 1 user ticks
 hda2 (filesys): 61 reads, 218 writes
 hda3 (scratch): 106 reads, 2 writes
 Console: 870 characters output

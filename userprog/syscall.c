@@ -79,6 +79,10 @@ syscall_handler (struct intr_frame *f UNUSED)
 			break;
 		case SYS_CLOSE:
 			break;
+		case SYS_SUM:
+			pibonacci();
+			sum_of_four_integers();
+			break;
 
 	}
 	//printf ("system call!\n");
@@ -137,9 +141,29 @@ int read(int fd, void* buffer, unsigned size)
 int write(int fd,const void *buffer, unsigned size)
 {
 	if(fd==1){
+	
 		putbuf(buffer,size);
 		return size;
 	}
 	return -1;
 }
 
+int pibonacci(int n){
+	if(n==1)
+		return 1;
+	if(n==2)
+		return 1;
+	
+	int n1=1, n2=1,temp;
+	int(i=0;i<n-2;i++){
+		temp = n1+n2;
+		n1 = n2;
+		n2 = temp;
+	}
+
+	return temp;
+}
+
+int sum_of_four_integers(int a,int b,int c,int d){
+	return a+b+c+d;
+}

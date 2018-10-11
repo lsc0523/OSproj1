@@ -1,5 +1,5 @@
 Copying tests/userprog/args-none to scratch partition...
-qemu -hda /tmp/lng2lDUj4y.dsk -m 4 -net none -nographic -monitor null
+qemu -hda /tmp/ON4oqjzOTg.dsk -m 4 -net none -nographic -monitor null
 PiLo hda1
 Loading.........
 Kernel command line: -q -f extract run args-none
@@ -26,8 +26,8 @@ Executing 'args-none':
 (args) end
 args-none: exit(0)
 Execution of 'args-none' complete.
-Timer: 76 ticks
-Thread: 2 idle ticks, 73 kernel ticks, 1 user ticks
+Timer: 77 ticks
+Thread: 1 idle ticks, 75 kernel ticks, 1 user ticks
 hda2 (filesys): 61 reads, 218 writes
 hda3 (scratch): 106 reads, 2 writes
 Console: 942 characters output
