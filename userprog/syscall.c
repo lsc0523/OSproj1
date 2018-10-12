@@ -79,9 +79,13 @@ syscall_handler (struct intr_frame *f UNUSED)
 			break;
 		case SYS_CLOSE:
 			break;
-		/*case SYS_SUM:
+		case SYS_SUM:
+			check_vaddr(f->esp+4);
+			check_vaddr(f->esp+8);
+			check_vaddr(f->esp+12);
+			check_vaddr(f->esp+16);
 			f->eax=pibonacci((int)*(uint32_t *)(f->esp+4));
-			f->eax=sum_of_four_integers((int)*(uint32_t *)(f->esp+4),(int)*(uint32_t *)(f->esp+8),(int)*(uint32_t *)(f->esp+12),(int)*(uint32_t *)(f->esp+16));*/
+			f->eax=sum_of_four_integers((int)*(uint32_t *)(f->esp+4),(int)*(uint32_t *)(f->esp+8),(int)*(uint32_t *)(f->esp+12),(int)*(uint32_t *)(f->esp+16));
 			break;
 
 	}
@@ -147,7 +151,7 @@ int write(int fd,const void *buffer, unsigned size)
 	}
 	return -1;
 }
-/*
+
 int pibonacci(int n){
 	if(n==0)
 		return 0;
@@ -168,4 +172,4 @@ int pibonacci(int n){
 
 int sum_of_four_integers(int a,int b,int c,int d){
 	return a+b+c+d;
-}*/
+}
